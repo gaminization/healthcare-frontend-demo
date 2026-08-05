@@ -149,9 +149,9 @@ function App() {
                 <Link to="/volunteering" className="nav-item">{t.volunteering}</Link>
                 <Link to="/health-predictor" className="nav-item">{t.healthPredictor}</Link>
                 <Link to="/news" className="nav-item">{t.news}</Link>
-                <Link to="/Login" className="nav-item">{t.Login}</Link>
-                <Link to="/Register" className="nav-item">{t.Register}</Link>
-                <Link to="/Profile" className="nav-item">{t.Profile}</Link>
+                <Link to="/login" className="nav-item">{t.Login}</Link>
+                <Link to="/register" className="nav-item">{t.Register}</Link>
+                <Link to="/profile" className="nav-item">{t.Profile}</Link>
                 <button onClick={toggleDarkMode} className="dark-mode-toggle">
                   {darkMode ? '☀️' : '🌙'} {t.mode}
                 </button>
@@ -217,20 +217,12 @@ function App() {
           </div>
         } />
         <Route path="/login" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/reset-password" element={<UpdatePassword />} />
-      
-        <Route path="/profile" element={
-                // <PrivateRoute>
-                //   <Profile 
-                //     darkMode={darkMode} 
-                //     toggleDarkMode={toggleDarkMode} 
-                //     language={language} 
-                //     changeLanguage={changeLanguage} 
-                //   />
-                // </PrivateRoute>
-                <Profile />
-        } />
+        <Route path="/profile" element={<Profile darkMode={darkMode} toggleDarkMode={toggleDarkMode} language={language} changeLanguage={changeLanguage} />} />
+        <Route path="/Profile" element={<Profile darkMode={darkMode} toggleDarkMode={toggleDarkMode} language={language} changeLanguage={changeLanguage} />} />
       </Routes>
     </Router>
     </VolunteeringProvider>
