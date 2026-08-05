@@ -1,0 +1,159 @@
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    margin-bottom: 30px;
+  }
+  
+  .profile-header h1 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info p {
+    margin: 0;
+    color: var(--text-color);
+  }
+  
+  .password-button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .password-button:hover {
+    background-color: var(--primary-color-dark, #0055a4);
+  }
+  
+  .profile-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--secondary-bg);
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .tab-button.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  .tab-content {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .health-scores-tab h2,
+  .volunteering-tab h2 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+  }
+  
+  .health-chart {
+    margin-bottom: 30px;
+  }
+  
+  .health-scores-list table,
+  .volunteering-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .health-scores-list th,
+  .volunteering-list th {
+    text-align: left;
+    padding: 10px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+  }
+  
+  .health-scores-list td,
+  .volunteering-list td {
+    padding: 10px;
+    border-bottom: 1px solid var(--secondary-bg);
+    color: var(--text-color);
+  }
+  
+  .delete-button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .volunteering-summary {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .summary-card {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .summary-card h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  .summary-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .save-score-button,
+  .log-hours-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .save-score-button:hover,
+  .log-hours-button:hover {
+    background-color: var(--primary-color-dark, #0055a4);
+  }
+  
+  .score-saved-message,
+  .record-saved-message {
+    margin-top: 10px;
+    color: #28a745;
+    font-weight: bold;
+  }
