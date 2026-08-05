@@ -152,14 +152,14 @@ body {
 
 /* Light map and dark map */
 .light-map {
-  background-image: url('./assets/WHO.png'), url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png');
+  background-image: url('./assets/world-map-real.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .dark-map {
-  background-image: url('./assets/WHO.png'), url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png');
+  background-image: url('./assets/world-map-real.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
