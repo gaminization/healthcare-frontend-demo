@@ -277,53 +277,45 @@ function HealthPredictor({ darkMode, toggleDarkMode, language, changeLanguage })
     });
   };
 
-  const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      calculateScore();
-      setShowResults(true);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    }
-  };
-
   const calculateScore = () => {
     let score = 0;
     const totalQuestions = questions.length;
     
     Object.entries(answers).forEach(([questionId, answer]) => {
       const question = questions.find(q => q.id === parseInt(questionId));
-      const optionIndex = question.options.indexOf(answer);
-      score += (question.options.length - optionIndex);
+      if (question) {
+        const optionIndex = question.options.indexOf(answer);
+        score += (question.options.length - optionIndex);
+      }
     });
     
     const percentage = Math.round((score / (totalQuestions * 4)) * 100);
     setHealthScore(percentage);
+    return percentage;
   };
-  
-  // New function to save score
-  const saveScore = async () => {
-    if (!isAuthenticated) {
-      if (window.confirm('You need to login to save your score. Would you like to login now?')) {
-        navigate('/login');
+
+  const handleNext = async () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      const finalScore = calculateScore();
+      setShowResults(true);
+      if (addHealthScore) {
+        await addHealthScore({ score: finalScore, answers });
+        setScoreSaved(true);
       }
-      return;
     }
-    
-    const scoreData = {
-      score: healthScore,
-      answers: answers
-    };
-    
-    const result = await addHealthScore(scoreData);
-    if (result) {
-      setScoreSaved(true);
-    }
+  };
+
+  const getQuestionImage = (q) => {
+    const textEn = (q.text && q.text.en) ? q.text.en.toLowerCase() : '';
+    if (textEn.includes('exercise')) return '/images/exercise.jpg';
+    if (textEn.includes('diet') || textEn.includes('fruit') || textEn.includes('nutrit')) return '/images/nutrition.jpg';
+    if (textEn.includes('sleep')) return '/images/sleep.jpg';
+    if (textEn.includes('water')) return '/images/water.jpg';
+    if (textEn.includes('stress') || textEn.includes('mental') || textEn.includes('meditation')) return '/images/mental.jpg';
+    if (textEn.includes('check-up') || textEn.includes('smoke') || textEn.includes('alcohol')) return '/images/vaccine.jpg';
+    return '/images/exercise.jpg';
   };
   
   const renderOptions = (questionId, options) => {
@@ -388,12 +380,11 @@ function HealthPredictor({ darkMode, toggleDarkMode, language, changeLanguage })
     }
   };
 
-  const questionImages = [
-    '/images/vaccine.jpg',
-    '/images/polio.jpg',
-    '/images/water.jpg',
-    '/images/malaria.jpg'
-  ];
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
 
   return (
     <main className="health-predictor-container">
@@ -408,7 +399,7 @@ function HealthPredictor({ darkMode, toggleDarkMode, language, changeLanguage })
       {!showResults ? (
         <div className="quiz-container">
           <div className="question-container">
-            <h2>{`${currentQuestion + 1}. ${questions[currentQuestion].text[language]}`}</h2>
+            <h2>{`${currentQuestion + 1}. ${questions[currentQuestion].text[language] || questions[currentQuestion].text.en}`}</h2>
             <div className="options-container">
               {renderOptions(questions[currentQuestion].id, questions[currentQuestion].options)}
             </div>
@@ -416,7 +407,7 @@ function HealthPredictor({ darkMode, toggleDarkMode, language, changeLanguage })
           
           <div className="image-container">
             <img
-              src={questionImages[currentQuestion % questionImages.length]}
+              src={getQuestionImage(questions[currentQuestion])}
               alt="Health Assessment"
               className="question-image-real"
             />
