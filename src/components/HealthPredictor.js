@@ -401,9 +401,9 @@ function HealthPredictor({ darkMode, toggleDarkMode, language, changeLanguage })
             <Link to="/volunteering" className="nav-item">{t.volunteering}</Link>
             <Link to="/health-predictor" className="nav-item active">{t.healthPredictor}</Link>
             <Link to="/news" className="nav-item">{t.news}</Link>
-            <Link to="/login" className="nav-item">{t.Login}</Link>
-            <Link to="/register" className="nav-item">{t.Register}</Link>
-            <Link to="/profile" className="nav-item">{t.Profile}</Link>
+            <Link to="/Login" className="nav-item">{t.Login}</Link>
+            <Link to="/Register" className="nav-item">{t.Register}</Link>
+            <Link to="/Profile" className="nav-item">{t.Profile}</Link>
           <button onClick={toggleDarkMode} className="dark-mode-toggle">
             {darkMode ? '☀️' : '🌙'} {t.mode}
           </button>

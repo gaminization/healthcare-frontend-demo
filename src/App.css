@@ -152,14 +152,14 @@ body {
 
 /* Light map and dark map */
 .light-map {
-  background-image: url('./assets/world-map-real.svg');
+  background-image: url('./assets/world-map.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .dark-map {
-  background-image: url('./assets/world-map-real.svg');
+  background-image: url('./assets/world-map.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
