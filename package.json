@@ -18,7 +18,12 @@
     "react-router-dom": "^7.4.0",
     "react-scripts": "^5.0.1",
     "recharts": "^2.15.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

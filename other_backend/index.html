@@ -1,0 +1,221 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .form-container {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    #message {
+      margin: 20px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <h1>MongoDB CRUD Authentication Demo</h1>
+  
+  <div id="message" class="hidden"></div>
+  
+  <div id="auth-forms">
+    <div class="form-container">
+      <h2>Register</h2>
+      <form id="register-form">
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Password" required>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+    
+    <div class="form-container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  
+  <div id="user-panel" class="hidden">
+    <h2>Welcome <span id="user-email"></span></h2>
+    <div class="form-container">
+      <h3>Change Password</h3>
+      <form id="change-password-form">
+        <input type="password" id="current-password" placeholder="Current Password" required>
+        <input type="password" id="new-password" placeholder="New Password" required>
+        <button type="submit">Change Password</button>
+      </form>
+    </div>
+    <button id="logout-btn">Logout</button>
+  </div>
+
+  <script>
+    // DOM elements
+    const authForms = document.getElementById('auth-forms');
+    const userPanel = document.getElementById('user-panel');
+    const userEmail = document.getElementById('user-email');
+    const messageDiv = document.getElementById('message');
+    
+    // Check if user is logged in
+    const token = localStorage.getItem('token');
+    if (token) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      showUserPanel(user);
+    }
+    
+    // Register form submission
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+      
+      try {
+        const response = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          showMessage(data.message, 'success');
+          document.getElementById('register-form').reset();
+        } else {
+          showMessage(data.message, 'error');
+        }
+      } catch (error) {
+        showMessage('An error occurred. Please try again.', 'error');
+      }
+    });
+    
+    // Login form submission
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify({ id: data.id, email: data.email }));
+          showUserPanel({ email: data.email });
+          document.getElementById('login-form').reset();
+        } else {
+          showMessage(data.message, 'error');
+        }
+      } catch (error) {
+        showMessage('An error occurred. Please try again.', 'error');
+      }
+    });
+    
+    // Change password form submission
+    document.getElementById('change-password-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const currentPassword = document.getElementById('current-password').value;
+      const newPassword = document.getElementById('new-password').value;
+      
+      try {
+        const response = await fetch('/api/auth/change-password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': localStorage.getItem('token')
+          },
+          body: JSON.stringify({ currentPassword, newPassword })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          showMessage(data.message, 'success');
+          document.getElementById('change-password-form').reset();
+        } else {
+          showMessage(data.message, 'error');
+        }
+      } catch (error) {
+        showMessage('An error occurred. Please try again.', 'error');
+      }
+    });
+    
+    // Logout button
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      showAuthForms();
+    });
+    
+    // Helper functions
+    function showUserPanel(user) {
+      authForms.classList.add('hidden');
+      userPanel.classList.remove('hidden');
+      userEmail.textContent = user.email;
+    }
+    
+    function showAuthForms() {
+      userPanel.classList.add('hidden');
+      authForms.classList.remove('hidden');
+    }
+    
+    function showMessage(message, type) {
+      messageDiv.textContent = message;
+      messageDiv.className = type;
+      messageDiv.classList.remove('hidden');
+      
+      setTimeout(() => {
+        messageDiv.classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+/* Volunteering.css */
+.volunteering-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .volunteering-container h1 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+  }
+  
+  .intro-text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    max-width: 800px;
+  }
+  
+  .volunteer-opportunities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  
+  .volunteer-card {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .volunteer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .volunteer-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: var(--secondary-bg);
+  }
+  
+  .volunteer-content {
+    padding: 20px;
+  }
+  
+  .volunteer-content h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+  }
+  
+  .volunteer-content p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .donate-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  
+  .donate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .volunteer-opportunities {
+      flex-direction: column;
+    }
+    
+    .volunteer-card {
+      width: 100%;
+    }
+  }
+  
+/* Add this to your Volunteering.css file */
+
+/* Donation Modal */
+.donation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+  
+  .donation-modal {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+  }
+  
+  .donation-modal h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .donation-modal h3 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .form-group input {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-bg);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 16px;
+  }
+  
+  .amount-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .currency-symbol {
+    position: absolute;
+    left: 12px;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .amount-input input {
+    padding-left: 30px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .cancel-button, .submit-button {
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .cancel-button {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+  }
+  
+  .submit-button {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .cancel-button:hover, .submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .submit-button:hover {
+    background-color: var(--primary-color-dark, #0055a4);
+  }
+  
+  @media (max-width: 480px) {
+    .donation-modal {
+      padding: 20px;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .cancel-button, .submit-button {
+      width: 100%;
+    }
+  }
+  

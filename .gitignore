@@ -1,6 +1,8 @@
 # dependencies
 node_modules/
 backend/node_modules/
+new_backend/node_modules/
+other_backend/node_modules/
 /.pnp
 .pnp.js
 
@@ -23,5 +25,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# experimental / legacy subfolder
+# legacy copy
 world-health-org/

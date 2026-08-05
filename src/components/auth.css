@@ -1,0 +1,217 @@
+/* Auth.css */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+    position: relative;
+  }
+  
+  .auth-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--card-bg, white);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    padding: 30px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  
+  .light-mode .auth-card {
+    background-color: white;
+    color: #003366;
+  }
+  
+  .dark-mode .auth-card {
+    background-color: #001a33;
+    color: #4a8fe7;
+    border: 1px solid #002b55;
+  }
+  
+  .auth-tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark-mode .auth-tabs {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .auth-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+  }
+  
+  .light-mode .auth-tab {
+    color: #003366;
+  }
+  
+  .dark-mode .auth-tab {
+    color: #4a8fe7;
+  }
+  
+  .auth-tab.active {
+    color: var(--primary-color, #0078d4);
+  }
+  
+  .auth-tab.active:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color, #0078d4);
+    border-radius: 3px 3px 0 0;
+  }
+  
+  .auth-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .dark-mode .form-group input {
+    background-color: #0a1929;
+    border: 1px solid #002b55;
+    color: #4a8fe7;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color, #0078d4);
+    box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2);
+  }
+  
+  .form-links {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.85rem;
+  }
+  
+  .forgot-password {
+    color: var(--primary-color, #0078d4);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  
+  .forgot-password:hover {
+    opacity: 0.8;
+  }
+  
+  .auth-button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--primary-color, #0078d4);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
+  }
+  
+  .auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+  }
+  
+  .message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .message.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+  }
+  
+  .message.error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+  }
+  
+  .user-menu {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Animation for the auth card */
+  .auth-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 500px) {
+    .auth-card {
+      padding: 20px;
+    }
+    
+    .auth-tab {
+      padding: 12px 8px;
+      font-size: 0.9rem;
+    }
+    
+    .form-group input {
+      padding: 10px 12px;
+    }
+  }
+  
