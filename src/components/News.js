@@ -131,35 +131,7 @@ function News({ darkMode, toggleDarkMode, language, changeLanguage }) {
   };
 
   return (
-    <div className={`App ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-      <header>
-        <div className="logo">
-          <img src={whoLogo} alt="WHO Logo" className="who-logo" />
-          <span>World Health Organization</span>
-        </div>
-        <nav>
-          <Link to="/" className="nav-item">{t.home}</Link>
-          <Link to="/projects" className="nav-item">{t.projects}</Link>
-          <Link to="/volunteering" className="nav-item">{t.volunteering}</Link>
-          <Link to="/health-predictor" className="nav-item">{t.healthPredictor}</Link>
-          <Link to="/news" className="nav-item active">{t.news}</Link>
-          <Link to="/Login" className="nav-item">{t.Login}</Link>
-          <Link to="/Register" className="nav-item">{t.Register}</Link>
-          <Link to="/Profile" className="nav-item">{t.Profile}</Link>
-          <button onClick={toggleDarkMode} className="dark-mode-toggle">
-            {darkMode ? '☀️' : '🌙'} {t.mode}
-          </button>
-          <div className="language-selector">
-            <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
-              <option value="en">🇬🇧 EN</option>
-              <option value="es">🇪🇸 ES</option>
-              <option value="fr">🇫🇷 FR</option>
-            </select>
-          </div>
-        </nav>
-      </header>
-
-      <main className="news-container">
+    <main className="news-container">
         <h1>{t.title}</h1>
         
         {expandedArticle ? (
@@ -215,7 +187,6 @@ function News({ darkMode, toggleDarkMode, language, changeLanguage }) {
           </div>
         )}
       </main>
-    </div>
   );
 }
 

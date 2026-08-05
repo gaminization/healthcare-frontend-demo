@@ -2,7 +2,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import whoLogo from '../assets/who-logo.png';
 import './Auth.css';
 
 const Register = () => {
@@ -45,10 +44,6 @@ const Register = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-logo">
-        <img src={whoLogo} alt="WHO Logo" />
-        <h1>World Health Organization</h1>
-      </div>
       <div className="auth-form-container">
         <h2>Create an Account</h2>
         {alert && <div className="alert alert-danger">{alert}</div>}
