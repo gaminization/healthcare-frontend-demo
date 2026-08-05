@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🌐 World Health Organization (WHO) Global Surveillance & Health Hub
 
-## Available Scripts
+<p align="center">
+  <b>A state-of-the-art, full-stack healthcare analytics, disease surveillance, and community action platform.</b>
+</p>
 
-In the project directory, you can run:
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-v24.16.0-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.18.2-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose_7.0.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)](https://github.com/gaminization/healthcare-frontend-demo)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](./LICENSE)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📌 Executive Overview
 
-### `npm test`
+The **WHO Global Surveillance & Health Hub** provides real-time disease tracking, interactive health diagnostics, global outreach project management, and volunteer deployment. Built with a modern React frontend and a resilient Express/Node.js backend, the platform features seamless offline in-memory fallback stores, JWT authentication, and responsive multi-language localization.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🎨 Key Features & Modules
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🗺️ 1. Interactive World Health Surveillance Map
+- **Live Regional Indicators**: Interactive vector map rendering disease surveillance data (COVID-19, Oncology, Immune metrics) across 6 major global regions.
+- **Dynamic Popup Diagnostics**: Instant regional case breakdowns with animated pulse indicators.
+- **High-Resolution Vector Graphics**: Powered by local SVG landmass rendering for offline and online reliability.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🩺 2. Diagnostic Health Predictor Quiz
+- **Static Grid Layout**: 100% fixed card bounds (`860px x 440px`) eliminating layout shifting.
+- **Topic-Specific Visuals**: Topic-matched photography (Exercise, Nutrition, Sleep, Mental Health).
+- **Automated Score Logging**: Instant calculation of radar metric breakdowns and automatic score saving to user profile history.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 📋 3. Global Healthcare Programs & Projects
+- **Interactive Search & Category Filters**: Filter global initiatives by domain (`Vaccination`, `Disease Control`, `Infrastructure`, `Research`).
+- **Progress & Metrics Tracking**: Real-time budget progress bars, volunteer counts, and program detail modal popups.
 
-### `npm run eject`
+### 🤝 4. WHO Volunteer Corps Portal
+- **Campaign Recruitment**: Frontline medical, public health, and engineering volunteer campaigns.
+- **Interactive Application Modal**: Streamlined application form.
+- **Real-Time Profile Integration**: Submitted applications automatically update the user's Profile volunteering log and total hours counter.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📰 5. WHO News & Press Center
+- **Categorized Releases**: Press briefings and policy updates with read-time indicators.
+- **Article Reader Modal**: Popup reader for full press releases.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🔒 6. Auth & Profile Dashboard
+- **JWT Security**: Token-based authentication with bcrypt password hashing.
+- **Resilient Fallback**: Automatic in-memory data store fallback if database connection is unavailable.
+- **Protected Profile Route**: User profile displaying score history line charts, volunteer logs, and security settings.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠️ Technology Stack
 
-## Learn More
+| Layer | Technologies Used |
+|---|---|
+| **Frontend Framework** | React 18, React Router v6, Chart.js, React-Chartjs-2 |
+| **Styling & Theme** | Vanilla CSS3 (Custom Design System, Light/Dark Modes, Glassmorphic UI) |
+| **Backend Framework** | Node.js, Express.js |
+| **Database & Security** | MongoDB, Mongoose ORM, JWT, BcryptJS |
+| **Asset Pipeline** | High-Res WebP/PNG & SVG Vector Graphics |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Quick Start Guide
 
-### Code Splitting
+### Prerequisites
+- **Node.js**: `v16.0.0` or higher (Tested on `v24.16.0`)
+- **npm**: `v8.0.0` or higher
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1. Clone the Repository
+```bash
+git clone https://github.com/gaminization/healthcare-frontend-demo.git
+cd healthcare-frontend-demo
+```
 
-### Analyzing the Bundle Size
+### 2. Install Dependencies
+```bash
+# Install root (frontend) dependencies
+npm install --legacy-peer-deps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Install backend dependencies
+cd backend && npm install --legacy-peer-deps && cd ..
+```
 
-### Making a Progressive Web App
+### 3. Start the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Option A: Run Backend & Frontend Concurrently
+```bash
+# Terminal 1: Start Express Backend (Port 5000)
+cd backend && npm start
 
-### Advanced Configuration
+# Terminal 2: Start React Frontend (Port 3000)
+PORT=3000 BROWSER=none npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Access the application at **`http://localhost:3000`**.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📡 API Endpoints Architecture
 
-### `npm run build` fails to minify
+| Endpoint | Method | Access | Description |
+|---|---|---|---|
+| `/api/auth/register` | `POST` | Public | Register new user & return JWT token |
+| `/api/auth/login` | `POST` | Public | Authenticate credentials & return JWT token |
+| `/api/auth/user` | `GET` | Private | Retrieve authenticated user profile |
+| `/api/auth/password` | `PUT` | Private | Update current user password |
+| `/api/health-scores` | `POST` | Private | Save diagnostic health score assessment |
+| `/api/health-scores` | `GET` | Private | Retrieve user's health score history |
+| `/api/health-scores/:id` | `DELETE` | Private | Delete specific health score record |
+| `/api/volunteering` | `POST` | Private | Submit volunteer campaign application |
+| `/api/volunteering` | `GET` | Private | Retrieve user's volunteer activity log |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 📚 Complete Project Documentation
+
+For deeper insight into architecture, contribution, and roadmap, consult the documentation directory:
+
+- [📐 Architecture Overview](./docs/ARCHITECTURE.md) - Internal system structure, data flow, and fallback mechanisms.
+- [🤝 Contributing Guidelines](./docs/CONTRIBUTING.md) - Code style, branch strategies, and pull request workflows.
+- [📜 Changelog](./docs/CHANGELOG.md) - Version release history and feature updates.
+- [🗺️ Project Roadmap](./docs/ROADMAP.md) - Future milestones and planned enhancements.
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ for Global Health Surveillance & Action.</sub>
+</div>

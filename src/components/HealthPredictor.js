@@ -5,8 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Line, Radar } from 'react-chartjs-2';
 import { AuthContext } from './context/AuthContext';
 import { HealthScoreContext } from './context/HealthScoreContext';
-// import {Radar} from 'recharts';
-import whoLogo from './assets/who-logo.png';
 import './HealthPredictor.css';
 import {
   Chart as ChartJS,

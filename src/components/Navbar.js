@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
-import whoLogo from './assets/who-logo.png';
+import whoLogo from '../assets/images/who-logo.png';
 
 const Navbar = ({ darkMode, toggleDarkMode, language, changeLanguage }) => {
   const { isAuthenticated, logout } = useContext(AuthContext);
