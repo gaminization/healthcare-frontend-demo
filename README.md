@@ -121,12 +121,9 @@ Access the application at **`http://localhost:3000`**.
 
 ## 📚 Complete Project Documentation
 
-For deeper insight into architecture, contribution, and roadmap, consult the documentation directory:
+For deeper insight into architecture, data flow, and database models:
 
 - [📐 Architecture Overview](./docs/ARCHITECTURE.md) - Internal system structure, data flow, and fallback mechanisms.
-- [🤝 Contributing Guidelines](./docs/CONTRIBUTING.md) - Code style, branch strategies, and pull request workflows.
-- [📜 Changelog](./docs/CHANGELOG.md) - Version release history and feature updates.
-- [🗺️ Project Roadmap](./docs/ROADMAP.md) - Future milestones and planned enhancements.
 
 ---
 
