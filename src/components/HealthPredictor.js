@@ -388,67 +388,84 @@ function HealthPredictor({ darkMode, toggleDarkMode, language, changeLanguage })
     }
   };
 
+  const questionImages = [
+    '/images/vaccine.jpg',
+    '/images/polio.jpg',
+    '/images/water.jpg',
+    '/images/malaria.jpg'
+  ];
+
   return (
     <main className="health-predictor-container">
-        <h1>{t.title}</h1>
+      <div className="predictor-hero-card">
+        <div className="hero-content-text">
+          <span className="hero-badge-tag">🩺 Diagnostic Assessment</span>
+          <h1>{t.title}</h1>
+          <p>Answer a few lifestyle questions to generate your personal WHO Health Score and radar breakdown.</p>
+        </div>
+      </div>
         
-        {!showResults ? (
-          <div className="quiz-container">
-            <div className="question-container">
-              <h2>{`${currentQuestion + 1}. ${questions[currentQuestion].text[language]}`}</h2>
-              <div className="options-container">
-                {renderOptions(questions[currentQuestion].id, questions[currentQuestion].options)}
-              </div>
-            </div>
-            
-            <div className="image-container">
-              <div className="question-image-placeholder"></div>
-            </div>
-            
-            <div className="navigation-buttons">
-              <button 
-                onClick={handlePrevious} 
-                disabled={currentQuestion === 0}
-                className="nav-button prev-button"
-              >
-                {t.previous}
-              </button>
-              <button 
-                onClick={handleNext} 
-                className="nav-button next-button"
-                disabled={!answers[questions[currentQuestion].id]}
-              >
-                {currentQuestion === questions.length - 1 ? t.submit : t.next}
-              </button>
+      {!showResults ? (
+        <div className="quiz-container">
+          <div className="question-container">
+            <h2>{`${currentQuestion + 1}. ${questions[currentQuestion].text[language]}`}</h2>
+            <div className="options-container">
+              {renderOptions(questions[currentQuestion].id, questions[currentQuestion].options)}
             </div>
           </div>
-        ) : (
-          <div className="results-container">
-            <h2>{t.result}</h2>
-            <div className="health-score">
-              <div className="score-circle" style={{"--health-score": healthScore}}>
-                <span className="score-value">{healthScore}%</span>
-              </div>
-            </div>
-            <div className="score-description">
-              {healthScore >= 80 ? (
-                <p>Excellent! You have very healthy habits.</p>
-              ) : healthScore >= 60 ? (
-                <p>Good! Your lifestyle is generally healthy, but there's room for improvement.</p>
-              ) : healthScore >= 40 ? (
-                <p>Fair. Consider making some lifestyle changes to improve your health.</p>
-              ) : (
-                <p>Your health score indicates you should consider significant lifestyle changes.</p>
-              )}
-            </div>
-            
-            <div className="chart-container" style={{ maxWidth: '600px', margin: '40px auto 0' }}>
-              <h3>{t.healthMetrics}</h3>
-              <Radar data={getChartData()} options={chartOptions} />
+          
+          <div className="image-container">
+            <img
+              src={questionImages[currentQuestion % questionImages.length]}
+              alt="Health Assessment"
+              className="question-image-real"
+            />
+          </div>
+          
+          <div className="navigation-buttons">
+            <button 
+              onClick={handlePrevious} 
+              disabled={currentQuestion === 0}
+              className="nav-button prev-button"
+            >
+              {t.previous}
+            </button>
+            <button 
+              onClick={handleNext} 
+              className="nav-button next-button"
+              disabled={!answers[questions[currentQuestion].id]}
+            >
+              {currentQuestion === questions.length - 1 ? t.submit : t.next}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="results-container">
+          <h2>{t.result}</h2>
+          <div className="health-score">
+            <div className="score-circle" style={{"--health-score": healthScore}}>
+              <span className="score-value">{healthScore}%</span>
             </div>
           </div>
-        )}
-      </main>
+          <div className="score-description">
+            {healthScore >= 80 ? (
+              <p>Excellent! You have very healthy habits.</p>
+            ) : healthScore >= 60 ? (
+              <p>Good! Your lifestyle is generally healthy, but there's room for improvement.</p>
+            ) : healthScore >= 40 ? (
+              <p>Fair. Consider making some lifestyle changes to improve your health.</p>
+            ) : (
+              <p>Your health score indicates you should consider significant lifestyle changes.</p>
+            )}
+          </div>
+          
+          <div className="chart-container" style={{ maxWidth: '600px', margin: '40px auto 0' }}>
+            <h3>{t.healthMetrics}</h3>
+            <Radar data={getChartData()} options={chartOptions} />
+          </div>
+        </div>
+      )}
+    </main>
   );
 }
 
