@@ -1,40 +1,13 @@
 /* HealthPredictor.css */
 .health-predictor-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .health-predictor-container h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: var(--text-color);
-  }
-  
-  .quiz-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: var(--card-bg);
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-  padding: 35px;
-  margin-bottom: 30px;
-  min-height: 450px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.question-container {
-  flex: 1;
-  min-width: 320px;
-  padding-right: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-  
-  .predictor-hero-card {
+.predictor-hero-card {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-badge-tag {
@@ -45,7 +18,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   background: rgba(0, 85, 164, 0.15);
   color: #0055a4;
 }
@@ -55,205 +28,279 @@
   color: #6ba5ff;
 }
 
+/* 100% Fixed Static Quiz Container */
+.quiz-container {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: 310px 50px;
+  gap: 20px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 30px;
+  margin: 0 auto 30px;
+  width: 100%;
+  max-width: 860px;
+  height: 440px;
+  box-sizing: border-box;
+  overflow: hidden;
+  align-items: center;
+}
+
+.question-container {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  overflow: hidden;
+}
+
+.question-container h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  line-height: 1.35;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.options-container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 230px;
+  overflow-y: auto;
+}
+
+.option {
+  position: relative;
+}
+
+.option input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.option label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark-mode .option label {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.option label:hover {
+  background-color: var(--hover-color);
+}
+
+.option input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.radio-button {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  margin-right: 10px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.option input[type="radio"]:checked + label .radio-button:after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.image-container {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 280px;
+  height: 310px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
 .question-image-real {
   width: 100%;
-  max-height: 260px;
+  height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-  
-  .options-container {
-    margin: 20px 0;
-  }
-  
-  .option {
-    margin-bottom: 15px;
-    position: relative;
-  }
-  
-  .option input[type="radio"] {
-    opacity: 0;
-    position: absolute;
-  }
-  
-  .option label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    color: var(--text-color);
-  }
-  
-  .option label:hover {
-    background-color: var(--hover-color);
-  }
-  
-  .option input[type="radio"]:checked + label {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .radio-button {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-color);
-    margin-right: 10px;
-    position: relative;
-  }
-  
-  .option input[type="radio"]:checked + label .radio-button:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: white;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 30px;
-  }
-  
-  .nav-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-  }
-  
-  .prev-button {
-    background-color: var(--secondary-bg);
-    color: var(--text-color);
-  }
-  
-  .next-button {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .nav-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }
-  
-  .nav-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  .results-container {
-    text-align: center;
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-  }
-  
-  .health-score {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-  }
-  
-  .score-circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: conic-gradient(
-      var(--primary-color) 0% var(--score),
-      var(--secondary-bg) var(--score) 100%
-    );
-    position: relative;
-  }
-  
-  .score-circle:before {
-    content: '';
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background-color: var(--card-bg);
-  }
-  
-  .score-value {
-    position: relative;
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--text-color);
-  }
-  
-  .score-description {
-    margin-top: 30px;
-    font-size: 1.2rem;
-    color: var(--text-color);
-  }
-  
-  @media (max-width: 768px) {
-    .quiz-container {
-      flex-direction: column;
-    }
-    
-    .question-container, .image-container {
-      width: 100%;
-      padding-right: 0;
-    }
-    
-    .image-container {
-      margin-top: 20px;
-    }
-  }
-  
-  /* Add these CSS variables to your App.css or create them in this file */
-  :root {
-    --primary-color: #0078d4;
-    --secondary-bg: #f0f0f0;
-    --card-bg: #ffffff;
-    --text-color: #333333;
-    --hover-color: #e6e6e6;
-  }
-  
-  .dark-mode {
-    --primary-color: #0078d4;
-    --secondary-bg: #2c2c2c;
-    --card-bg: #1e1e1e;
-    --text-color: #f0f0f0;
-    --hover-color: #3a3a3a;
-  }
-  
-  .score-circle {
-    --score: calc(var(--health-score) * 1%);
-  }
-  
-  .chart-container {
-    margin-top: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .chart-container h3 {
-    margin-bottom: 20px;
-    color: var(--text-color);
-  }
-  
-  canvas {
-    max-width: 100%;
+
+.navigation-buttons {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  height: 50px;
+}
+
+.dark-mode .navigation-buttons {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-button {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.prev-button {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+}
+
+.next-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.nav-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.nav-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.results-container {
+  text-align: center;
+  background-color: var(--card-bg);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+.health-score {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.score-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: conic-gradient(
+    var(--primary-color) 0% var(--score),
+    var(--secondary-bg) var(--score) 100%
+  );
+  position: relative;
+}
+
+.score-circle:before {
+  content: '';
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+}
+
+.score-value {
+  position: relative;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.score-description {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+:root {
+  --primary-color: #0055a4;
+  --secondary-bg: #f0f4f8;
+  --card-bg: #ffffff;
+  --text-color: #003366;
+  --hover-color: #e6f0fa;
+}
+
+.dark-mode {
+  --primary-color: #4a8fe7;
+  --secondary-bg: #002b55;
+  --card-bg: #001a33;
+  --text-color: #4a8fe7;
+  --hover-color: #002b55;
+}
+
+.score-circle {
+  --score: calc(var(--health-score) * 1%);
+}
+
+.chart-container {
+  margin-top: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-container h3 {
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .quiz-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     height: auto;
+    max-height: none;
   }
-                                            
+  
+  .image-container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    width: 100%;
+    height: 200px;
+  }
+
+  .navigation-buttons {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+}

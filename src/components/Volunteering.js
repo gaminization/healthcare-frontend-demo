@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { VolunteeringContext } from './context/VolunteeringContext';
 import './Volunteering.css';
 
 const Volunteering = () => {
+  const { addVolunteeringRecord } = useContext(VolunteeringContext);
   const [selectedOpportunity, setSelectedOpportunity] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -49,8 +51,15 @@ const Volunteering = () => {
     }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (addVolunteeringRecord && selectedOpportunity) {
+      await addVolunteeringRecord({
+        project: selectedOpportunity.title,
+        hours: 20,
+        description: form.motivation ? `${form.profession} - ${form.motivation}` : `Applied for ${selectedOpportunity.title}`
+      });
+    }
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
