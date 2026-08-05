@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 import worldData from './components/worldData';
@@ -36,9 +36,9 @@ function App() {
     setPopupPosition({ x, y });
     setSelectedRegion({
       name: region,
-      covid19: Math.floor(Math.random() * 10000),
-      cancer: Math.floor(Math.random() * 5000),
-      hiv: Math.floor(Math.random() * 3000)
+      covid19: Math.floor(Math.random() * 10000 + 1200),
+      cancer: Math.floor(Math.random() * 5000 + 800),
+      hiv: Math.floor(Math.random() * 3000 + 400)
     });
   };
 
@@ -66,7 +66,34 @@ function App() {
                 <Route
                   path="/"
                   element={
-                    <main>
+                    <main className="home-main">
+                      {/* Live Incident Ticker */}
+                      <div className="live-ticker-banner">
+                        <span className="ticker-badge">🔴 LIVE UPDATE</span>
+                        <div className="ticker-text">
+                          World Health Assembly adopts historic rapid pandemic response agreement • Polio Eradication Campaign reaches 92% coverage • Over 200M bed nets deployed in East Africa
+                        </div>
+                      </div>
+
+                      {/* Home Hero Section */}
+                      <div className="home-hero">
+                        <h1>Global Health Surveillance & Action Map</h1>
+                        <p>Monitoring disease trends, managing emergency medical responses, and supporting health programs across 194 member nations.</p>
+
+                        <div className="quick-actions-bar">
+                          <Link to="/projects" className="action-btn primary-btn">
+                            Explore Health Programs →
+                          </Link>
+                          <Link to="/volunteering" className="action-btn secondary-btn">
+                            Join Volunteer Corps
+                          </Link>
+                          <Link to="/health-predictor" className="action-btn outline-btn">
+                            Calculate Health Score
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Interactive World Map */}
                       <div className="world-map-container">
                         <div className={`world-map ${darkMode ? 'dark-map' : 'light-map'}`}>
                           {worldData.regions.map((region, index) => (
@@ -81,7 +108,9 @@ function App() {
                                 const y = rect.top - mapContainer.top;
                                 handleRegionClick(region.name, x, y);
                               }}
-                            ></div>
+                            >
+                              <div className="pulse-ring"></div>
+                            </div>
                           ))}
 
                           {selectedRegion && (
@@ -95,24 +124,69 @@ function App() {
                               <button className="close-popup" onClick={closePopup}>×</button>
                               <h3>{selectedRegion.name}</h3>
                               <div className="stat-container">
-                                <div className="stat">
-                                  <span className="stat-label">COVID-19</span>
-                                  <span className="stat-value">{selectedRegion.covid19}</span>
-                                  <span className="stat-unit">cases</span>
+                                <div className="stat covid">
+                                  <div className="stat-icon">🦠</div>
+                                  <div className="stat-info">
+                                    <span className="stat-label">COVID-19 Active</span>
+                                    <span className="stat-value">{selectedRegion.covid19.toLocaleString()}</span>
+                                  </div>
                                 </div>
-                                <div className="stat">
-                                  <span className="stat-label">Cancer</span>
-                                  <span className="stat-value">{selectedRegion.cancer}</span>
-                                  <span className="stat-unit">cases</span>
+                                <div className="stat cancer">
+                                  <div className="stat-icon">🎗️</div>
+                                  <div className="stat-info">
+                                    <span className="stat-label">Oncology Tracking</span>
+                                    <span className="stat-value">{selectedRegion.cancer.toLocaleString()}</span>
+                                  </div>
                                 </div>
-                                <div className="stat">
-                                  <span className="stat-label">HIV</span>
-                                  <span className="stat-value">{selectedRegion.hiv}</span>
-                                  <span className="stat-unit">cases</span>
+                                <div className="stat hiv">
+                                  <div className="stat-icon">🔴</div>
+                                  <div className="stat-info">
+                                    <span className="stat-label">Immune Surveillance</span>
+                                    <span className="stat-value">{selectedRegion.hiv.toLocaleString()}</span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           )}
+                        </div>
+                      </div>
+
+                      {/* Featured Initiatives Section */}
+                      <div className="features-section">
+                        <h2>Core Focus Areas</h2>
+                        <div className="features-grid">
+                          <div className="feature-card">
+                            <div className="feature-img">
+                              <img src="/images/polio.jpg" alt="Polio Eradication" />
+                            </div>
+                            <div className="feature-body">
+                              <h3>Immunization & Polio Eradication</h3>
+                              <p>Reaching over 400 million children annually with life-saving oral vaccines.</p>
+                              <Link to="/projects" className="feature-link">View Program →</Link>
+                            </div>
+                          </div>
+
+                          <div className="feature-card">
+                            <div className="feature-img">
+                              <img src="/images/malaria.jpg" alt="Malaria Prevention" />
+                            </div>
+                            <div className="feature-body">
+                              <h3>Malaria & Vector Control</h3>
+                              <p>Distributing dual-active long-lasting bed nets and rapid diagnostic kits.</p>
+                              <Link to="/projects" className="feature-link">View Program →</Link>
+                            </div>
+                          </div>
+
+                          <div className="feature-card">
+                            <div className="feature-img">
+                              <img src="/images/water.jpg" alt="Water Sanitation" />
+                            </div>
+                            <div className="feature-body">
+                              <h3>Clean Water & Hygiene Infrastructure</h3>
+                              <p>Installing solar filtration systems in healthcare centers and schools.</p>
+                              <Link to="/projects" className="feature-link">View Program →</Link>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </main>

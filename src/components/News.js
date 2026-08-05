@@ -1,193 +1,133 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import whoLogo from './assets/who-logo.png';
 import './News.css';
 
-function News({ darkMode, toggleDarkMode, language, changeLanguage }) {
-  const [expandedArticle, setExpandedArticle] = useState(null);
-  
-  const translations = {
-    en: {
-      title: 'Latest News',
-      home: 'Home',
-      projects: 'Projects',
-      volunteering: 'Volunteering',
-      healthPredictor: 'Health Predictor',
-      news: 'News',
-      mode: 'MODE',
-      language: 'Language',
-      readMore: 'Continue reading →',
-      date: 'Date',
-      category: 'Category',
-      backToList: '← Back to news list',
-      fullArticle: 'Full Article',
-            Login: 'Login',
-            Register: 'Register',
-            Profile: 'Profile'
-    },
-    es: {
-      title: 'Últimas Noticias',
-      home: 'Inicio',
-      projects: 'Proyectos',
-      volunteering: 'Voluntariado',
-      healthPredictor: 'Predictor de Salud',
-      news: 'Noticias',
-      mode: 'MODO',
-      language: 'Idioma',
-      readMore: 'Continuar leyendo →',
-      date: 'Fecha',
-      category: 'Categoría',
-      backToList: '← Volver a la lista de noticias',
-      fullArticle: 'Artículo Completo',
-            Login: 'Login',
-            Register: 'Register',
-            Profile: 'Profile'
-    },
-    fr: {
-      title: 'Dernières Actualités',
-      home: 'Accueil',
-      projects: 'Projets',
-      volunteering: 'Bénévolat',
-      healthPredictor: 'Prédicteur de Santé',
-      news: 'Actualités',
-      mode: 'MODE',
-      language: 'Langue',
-      readMore: 'Continuer la lecture →',
-      date: 'Date',
-      category: 'Catégorie',
-      backToList: '← Retour à la liste des actualités',
-      fullArticle: 'Article Complet',
-            Login: 'Login',
-            Register: 'Register',
-            Profile: 'Profile'
-    }
-  };
+const News = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [activeArticle, setActiveArticle] = useState(null);
 
-  const t = translations[language];
-
-  // Sample news data
-  const newsArticles = [
+  const articles = [
     {
       id: 1,
-      title: {
-        en: 'WHO Launches New Initiative to Combat Antimicrobial Resistance',
-        es: 'La OMS lanza nueva iniciativa para combatir la resistencia a los antimicrobianos',
-        fr: 'L\'OMS lance une nouvelle initiative pour lutter contre la résistance aux antimicrobiens'
-      },
-      summary: {
-        en: 'The World Health Organization has announced a global initiative to address the growing threat of antimicrobial resistance, which poses a significant risk to modern medicine and public health worldwide.',
-        es: 'La Organización Mundial de la Salud ha anunciado una iniciativa global para abordar la creciente amenaza de la resistencia a los antimicrobianos, que representa un riesgo significativo para la medicina moderna y la salud pública en todo el mundo.',
-        fr: 'L\'Organisation mondiale de la Santé a annoncé une initiative mondiale pour faire face à la menace croissante de la résistance aux antimicrobiens, qui pose un risque important pour la médecine moderne et la santé publique dans le monde entier.'
-      },
-      fullArticle: {
-        en: 'The World Health Organization has announced a global initiative to address the growing threat of antimicrobial resistance, which poses a significant risk to modern medicine and public health worldwide. The initiative will focus on improving awareness of antimicrobial resistance, strengthening surveillance and research, optimizing the use of antimicrobial medicines, and ensuring sustainable investment in new medicines, diagnostic tools, vaccines, and other interventions. WHO Director-General emphasized that antimicrobial resistance is one of the most urgent health challenges of our time, threatening to undo a century of medical progress. The initiative will bring together governments, private sector partners, civil society organizations, and academic institutions to develop and implement effective strategies to combat this global health threat. Member states have committed to developing national action plans aligned with the global initiative, with support from WHO regional and country offices.',
-        es: 'La Organización Mundial de la Salud ha anunciado una iniciativa global para abordar la creciente amenaza de la resistencia a los antimicrobianos, que representa un riesgo significativo para la medicina moderna y la salud pública en todo el mundo. La iniciativa se centrará en mejorar la conciencia sobre la resistencia a los antimicrobianos, fortalecer la vigilancia y la investigación, optimizar el uso de medicamentos antimicrobianos y garantizar una inversión sostenible en nuevos medicamentos, herramientas de diagnóstico, vacunas y otras intervenciones. El Director General de la OMS enfatizó que la resistencia a los antimicrobianos es uno de los desafíos de salud más urgentes de nuestro tiempo, amenazando con deshacer un siglo de progreso médico. La iniciativa reunirá a gobiernos, socios del sector privado, organizaciones de la sociedad civil e instituciones académicas para desarrollar e implementar estrategias efectivas para combatir esta amenaza para la salud global. Los estados miembros se han comprometido a desarrollar planes de acción nacionales alineados con la iniciativa global, con el apoyo de las oficinas regionales y nacionales de la OMS.',
-        fr: 'L\'Organisation mondiale de la Santé a annoncé une initiative mondiale pour faire face à la menace croissante de la résistance aux antimicrobiens, qui pose un risque important pour la médecine moderne et la santé publique dans le monde entier. L\'initiative se concentrera sur l\'amélioration de la sensibilisation à la résistance aux antimicrobiens, le renforcement de la surveillance et de la recherche, l\'optimisation de l\'utilisation des médicaments antimicrobiens et la garantie d\'un investissement durable dans de nouveaux médicaments, outils de diagnostic, vaccins et autres interventions. Le Directeur général de l\'OMS a souligné que la résistance aux antimicrobiens est l\'un des défis de santé les plus urgents de notre époque, menaçant d\'annuler un siècle de progrès médical. L\'initiative réunira des gouvernements, des partenaires du secteur privé, des organisations de la société civile et des institutions académiques pour développer et mettre en œuvre des stratégies efficaces pour combattre cette menace pour la santé mondiale. Les États membres se sont engagés à élaborer des plans d\'action nationaux alignés sur l\'initiative mondiale, avec le soutien des bureaux régionaux et nationaux de l\'OMS.'
-      },
-      date: '2025-03-22',
-      category: 'Global Health',
-      image: 'amr-initiative.jpg'
+      title: 'Global Summit Approves Historic Pandemic Response Accord',
+      category: 'Policy',
+      date: 'August 4, 2026',
+      readTime: '4 min read',
+      image: '/images/vaccine.jpg',
+      snippet: 'Delegates from 194 WHO member states have ratified new guidelines for global rapid vaccine sharing and early pathogen detection.',
+      content: `GENEVA — In a landmark decision at the World Health Assembly, representatives unanimously adopted a comprehensive global agreement to streamline medical countermeasure distribution during health emergencies.
+      
+      Key elements include:
+      - Automatic activation of emergency funding reserves within 24 hours of a public health alert.
+      - Standardized intellectual property sharing protocols for diagnostic kits and essential therapies.
+      - Establishment of regional manufacturing hubs in Africa and Latin America.`
     },
-    // Add full article content to the other news items
     {
       id: 2,
-      title: {
-        en: 'WHO Reports Progress in Global Vaccination Efforts',
-        es: 'La OMS informa sobre el progreso en los esfuerzos de vacunación global',
-        fr: 'L\'OMS fait état de progrès dans les efforts de vaccination mondiale'
-      },
-      summary: {
-        en: 'A new report from the World Health Organization shows significant progress in global vaccination coverage, with more children receiving life-saving vaccines than ever before. However, challenges remain in reaching the most vulnerable populations.',
-        es: 'Un nuevo informe de la Organización Mundial de la Salud muestra un progreso significativo en la cobertura de vacunación global, con más niños recibiendo vacunas que salvan vidas que nunca antes. Sin embargo, persisten desafíos para llegar a las poblaciones más vulnerables.',
-        fr: 'Un nouveau rapport de l\'Organisation mondiale de la Santé montre des progrès significatifs dans la couverture vaccinale mondiale, avec plus d\'enfants recevant des vaccins salvateurs que jamais auparavant. Cependant, des défis subsistent pour atteindre les populations les plus vulnérables.'
-      },
-      fullArticle: {
-        en: 'A new report from the World Health Organization shows significant progress in global vaccination coverage, with more children receiving life-saving vaccines than ever before. However, challenges remain in reaching the most vulnerable populations. The report indicates that global immunization coverage has reached 85%, a historic high, with substantial gains in previously underserved regions. The success is attributed to coordinated international efforts, increased funding, and innovative approaches to vaccine delivery in remote areas. Despite this progress, approximately 20 million children worldwide still miss out on basic vaccines each year, primarily in conflict zones, remote rural areas, and urban slums. The COVID-19 pandemic initially disrupted routine immunization services, but most countries have now recovered and strengthened their vaccination programs. WHO is working with partners to implement targeted strategies to reach zero-dose children and close persistent equity gaps in immunization coverage. The report also highlights the successful introduction of new vaccines, including those for malaria, dengue, and HPV, into national immunization programs in low and middle-income countries.',
-        es: 'Un nuevo informe de la Organización Mundial de la Salud muestra un progreso significativo en la cobertura de vacunación global, con más niños recibiendo vacunas que salvan vidas que nunca antes. Sin embargo, persisten desafíos para llegar a las poblaciones más vulnerables. El informe indica que la cobertura de inmunización global ha alcanzado el 85%, un máximo histórico, con ganancias sustanciales en regiones previamente desatendidas. El éxito se atribuye a esfuerzos internacionales coordinados, mayor financiamiento y enfoques innovadores para la entrega de vacunas en áreas remotas. A pesar de este progreso, aproximadamente 20 millones de niños en todo el mundo todavía se pierden las vacunas básicas cada año, principalmente en zonas de conflicto, áreas rurales remotas y barrios marginales urbanos. La pandemia de COVID-19 inicialmente interrumpió los servicios de inmunización de rutina, pero la mayoría de los países ahora se han recuperado y han fortalecido sus programas de vacunación. La OMS está trabajando con socios para implementar estrategias dirigidas a llegar a los niños con cero dosis y cerrar las brechas persistentes de equidad en la cobertura de inmunización. El informe también destaca la exitosa introducción de nuevas vacunas, incluidas las de malaria, dengue y VPH, en los programas nacionales de inmunización en países de ingresos bajos y medios.',
-        fr: 'Un nouveau rapport de l\'Organisation mondiale de la Santé montre des progrès significatifs dans la couverture vaccinale mondiale, avec plus d\'enfants recevant des vaccins salvateurs que jamais auparavant. Cependant, des défis subsistent pour atteindre les populations les plus vulnérables. Le rapport indique que la couverture vaccinale mondiale a atteint 85%, un niveau historiquement élevé, avec des gains substantiels dans les régions auparavant mal desservies. Le succès est attribué à des efforts internationaux coordonnés, à un financement accru et à des approches innovantes pour la livraison de vaccins dans les zones reculées. Malgré ces progrès, environ 20 millions d\'enfants dans le monde ne reçoivent toujours pas les vaccins de base chaque année, principalement dans les zones de conflit, les zones rurales reculées et les bidonvilles urbains. La pandémie de COVID-19 a initialement perturbé les services de vaccination de routine, mais la plupart des pays ont maintenant récupéré et renforcé leurs programmes de vaccination. L\'OMS travaille avec des partenaires pour mettre en œuvre des stratégies ciblées pour atteindre les enfants à dose zéro et combler les écarts persistants d\'équité dans la couverture vaccinale. Le rapport souligne également l\'introduction réussie de nouveaux vaccins, notamment contre le paludisme, la dengue et le VPH, dans les programmes nationaux de vaccination des pays à revenu faible et intermédiaire.'
-      },
-      date: '2025-03-15',
-      category: 'Immunization',
-      image: 'vaccination-progress.jpg'
+      title: 'Breakthrough in Next-Gen Oral Polio Vaccine Distribution',
+      category: 'Vaccines',
+      date: 'August 2, 2026',
+      readTime: '3 min read',
+      image: '/images/polio.jpg',
+      snippet: 'Field trials demonstrate 98% protection rate with thermal-stable oral polio vaccines requiring no cold-chain refrigeration.',
+      content: `KABUL / ISLAMABAD — Health officials announced a major breakthrough in immunizing remote communities against Type 2 poliovirus. The newly deployed thermal-stable oral vaccine remains effective at ambient tropical temperatures for up to 30 days without refrigeration.`
     },
-    // Continue with the other articles...
+    {
+      id: 3,
+      title: 'Rollout of 20M Insecticidal Bed Nets Achieves Milestones in East Africa',
+      category: 'Prevention',
+      date: 'July 28, 2026',
+      readTime: '5 min read',
+      image: '/images/malaria.jpg',
+      snippet: 'Community health worker networks complete distribution of dual-active ingredient mosquito nets across high-transmission districts.',
+      content: `KAMPALA — The World Health Organization, alongside national health ministries, confirmed the completion of its largest malaria vector control campaign to date across East Africa.`
+    },
+    {
+      id: 4,
+      title: 'Clean Water Infrastructure Expansion Reduces Waterborne Outbreaks by 60%',
+      category: 'Environment',
+      date: 'July 20, 2026',
+      readTime: '4 min read',
+      image: '/images/water.jpg',
+      snippet: 'Solar-powered water purification systems installed in 1,200 rural clinics mark a new standard for primary healthcare facilities.',
+      content: `DHAKA — Access to safe drinking water and sanitation in primary healthcare centers has significantly decreased waterborne cholera and enteric infection rates in rural districts.`
+    }
   ];
 
-  // Format date based on language
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    if (language === 'en') {
-      return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
-    } else if (language === 'es') {
-      return new Intl.DateTimeFormat('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
-    } else if (language === 'fr') {
-      return new Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
-    }
-  };
+  const categories = ['All', 'Policy', 'Vaccines', 'Prevention', 'Environment'];
 
-  const handleReadMore = (articleId) => {
-    setExpandedArticle(articleId);
-    window.scrollTo(0, 0);
-  };
+  const filteredArticles = selectedCategory === 'All'
+    ? articles
+    : articles.filter(a => a.category === selectedCategory);
 
   return (
     <main className="news-container">
-        <h1>{t.title}</h1>
-        
-        {expandedArticle ? (
-          // Full article view
-          <div className="expanded-article">
-            <button 
-              className="back-button" 
-              onClick={() => setExpandedArticle(null)}
-            >
-              {t.backToList}
-            </button>
+      <div className="news-hero">
+        <span className="news-badge">WHO Media & Global Health Updates</span>
+        <h1>Latest News & Press Releases</h1>
+        <p>Stay informed with authoritative global health advisories, outbreak reports, policy announcements, and scientific breakthroughs.</p>
+      </div>
+
+      <div className="news-categories">
+        {categories.map(cat => (
+          <button
+            key={cat}
+            className={`news-cat-btn ${selectedCategory === cat ? 'active' : ''}`}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div className="news-grid">
+        {filteredArticles.map(article => (
+          <div className="news-card" key={article.id}>
+            <div className="news-img-box">
+              <img src={article.image} alt={article.title} />
+              <span className="news-tag">{article.category}</span>
+            </div>
             
-            {newsArticles.filter(article => article.id === expandedArticle).map(article => (
-              <div key={article.id} className="full-article">
-                <div className="article-image-container full-width">
-                  <div className="article-image-placeholder"></div>
-                </div>
-                <h2>{article.title[language]}</h2>
-                <div className="article-meta">
-                  <span className="article-date">{t.date}: {formatDate(article.date)}</span>
-                  <span className="article-category">{t.category}: {article.category}</span>
-                </div>
-                <div className="article-full-content">
-                  <p>{article.fullArticle[language]}</p>
-                </div>
+            <div className="news-content">
+              <div className="news-meta">
+                <span>📅 {article.date}</span>
+                <span>⏱️ {article.readTime}</span>
               </div>
-            ))}
+              <h3>{article.title}</h3>
+              <p>{article.snippet}</p>
+
+              <button className="read-more-btn" onClick={() => setActiveArticle(article)}>
+                Read Full Story →
+              </button>
+            </div>
           </div>
-        ) : (
-          // Article list view
-          <div className="news-articles">
-            {newsArticles.map((article) => (
-              <div key={article.id} className="news-article">
-                <div className="article-image-container">
-                  <div className="article-image-placeholder"></div>
-                </div>
-                <div className="article-content">
-                  <h2>{article.title[language]}</h2>
-                  <div className="article-meta">
-                    <span className="article-date">{t.date}: {formatDate(article.date)}</span>
-                    <span className="article-category">{t.category}: {article.category}</span>
-                  </div>
-                  <p className="article-summary">{article.summary[language]}</p>
-                  <button 
-                    className="read-more-link"
-                    onClick={() => handleReadMore(article.id)}
-                  >
-                    {t.readMore}
-                  </button>
-                </div>
+        ))}
+      </div>
+
+      {activeArticle && (
+        <div className="modal-overlay" onClick={() => setActiveArticle(null)}>
+          <div className="modal-content news-modal" onClick={e => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setActiveArticle(null)}>×</button>
+            <div className="news-modal-img">
+              <img src={activeArticle.image} alt={activeArticle.title} />
+            </div>
+            <div className="news-modal-body">
+              <span className="news-tag">{activeArticle.category}</span>
+              <h2>{activeArticle.title}</h2>
+              <div className="news-meta">
+                <span>📅 {activeArticle.date}</span> • <span>⏱️ {activeArticle.readTime}</span>
               </div>
-            ))}
+              <hr />
+              <div className="article-full-text">
+                {activeArticle.content.split('\n').map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
           </div>
-        )}
-      </main>
+        </div>
+      )}
+    </main>
   );
-}
+};
 
 export default News;

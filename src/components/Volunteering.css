@@ -1,230 +1,294 @@
 /* Volunteering.css */
 .volunteering-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .volunteering-container h1 {
-    margin-bottom: 20px;
-    color: var(--text-color);
-  }
-  
-  .intro-text {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: var(--text-color);
-    max-width: 800px;
-  }
-  
-  .volunteer-opportunities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: space-between;
-  }
-  
-  .volunteer-card {
-    flex: 1;
-    min-width: 300px;
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .volunteer-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  .volunteer-image-placeholder {
-    width: 100%;
-    height: 200px;
-    background-color: var(--secondary-bg);
-  }
-  
-  .volunteer-content {
-    padding: 20px;
-  }
-  
-  .volunteer-content h3 {
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    font-size: 1.3rem;
-  }
-  
-  .volunteer-content p {
-    color: var(--text-color);
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
-  
-  .donate-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s;
-  }
-  
-  .donate-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  @media (max-width: 768px) {
-    .volunteer-opportunities {
-      flex-direction: column;
-    }
-    
-    .volunteer-card {
-      width: 100%;
-    }
-  }
-  
-/* Add this to your Volunteering.css file */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
 
-/* Donation Modal */
-.donation-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-  }
-  
-  .donation-modal {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--text-color);
-  }
-  
-  .donation-modal h2 {
-    margin-bottom: 15px;
-    color: var(--primary-color);
-  }
-  
-  .donation-modal h3 {
-    margin-bottom: 20px;
-    color: var(--text-color);
-    font-weight: 500;
-  }
-  
-  .donation-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .form-group label {
-    font-weight: 500;
-    color: var(--text-color);
-  }
-  
-  .form-group input {
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid var(--secondary-bg);
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    font-size: 16px;
-  }
-  
-  .amount-input {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .currency-symbol {
-    position: absolute;
-    left: 12px;
-    color: var(--text-color);
-    font-weight: 500;
-  }
-  
-  .amount-input input {
-    padding-left: 30px;
-  }
-  
-  .form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .cancel-button, .submit-button {
-    padding: 12px 20px;
-    border-radius: 5px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .cancel-button {
-    background-color: var(--secondary-bg);
-    color: var(--text-color);
-  }
-  
-  .submit-button {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .cancel-button:hover, .submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .submit-button:hover {
-    background-color: var(--primary-color-dark, #0055a4);
-  }
-  
-  @media (max-width: 480px) {
-    .donation-modal {
-      padding: 20px;
-    }
-    
-    .form-actions {
-      flex-direction: column;
-      gap: 10px;
-    }
-    
-    .cancel-button, .submit-button {
-      width: 100%;
-    }
-  }
-  
+.volunteering-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.volunteering-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  background: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+}
+
+.volunteering-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.volunteering-hero p {
+  font-size: 1.1rem;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+
+.impact-card {
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.light-mode .impact-card {
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 51, 102, 0.08);
+  border: 1px solid rgba(0, 51, 102, 0.08);
+}
+
+.dark-mode .impact-card {
+  background: #001a33;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(74, 143, 231, 0.15);
+}
+
+.impact-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.impact-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Opportunities Grid */
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 24px;
+}
+
+.opportunity-card {
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-mode .opportunity-card {
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 51, 102, 0.08);
+  border: 1px solid rgba(0, 51, 102, 0.08);
+}
+
+.dark-mode .opportunity-card {
+  background: #001a33;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(74, 143, 231, 0.15);
+}
+
+.opportunity-card:hover {
+  transform: translateY(-6px);
+}
+
+.opp-img-box {
+  position: relative;
+  height: 200px;
+}
+
+.opp-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.opp-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(0, 85, 164, 0.9);
+  color: white;
+}
+
+.opp-spots {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(40, 167, 69, 0.9);
+  color: white;
+}
+
+.opp-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.opp-content h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.opp-meta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0055a4;
+  margin-bottom: 10px;
+}
+
+.dark-mode .opp-meta {
+  color: #6ba5ff;
+}
+
+.opp-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-bottom: 14px;
+}
+
+.opp-reqs {
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.opp-reqs ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 6px;
+}
+
+.opp-reqs li {
+  padding: 3px 0;
+  opacity: 0.85;
+}
+
+.apply-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.apply-btn:hover {
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+
+/* Modal Form */
+.volunteer-modal {
+  max-width: 550px;
+  padding: 25px;
+}
+
+.modal-header h2 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.modal-header p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+
+.volunteer-form .form-group {
+  margin-bottom: 14px;
+}
+
+.volunteer-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.volunteer-form input, .volunteer-form select, .volunteer-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.light-mode .volunteer-form input,
+.light-mode .volunteer-form select,
+.light-mode .volunteer-form textarea {
+  background: #f8fafd;
+  border: 1px solid rgba(0, 51, 102, 0.2);
+  color: #003366;
+}
+
+.dark-mode .volunteer-form input,
+.dark-mode .volunteer-form select,
+.dark-mode .volunteer-form textarea {
+  background: #002b55;
+  border: 1px solid rgba(74, 143, 231, 0.3);
+  color: #4a8fe7;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.submit-app-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #0055a4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.success-box {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
